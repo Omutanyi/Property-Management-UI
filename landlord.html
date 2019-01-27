@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>landlord-superUser</title>
+	<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" type="text/css" href="landlord.css">
+	<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Heebo:100%7COpen+Sans:300,400,400i,600,700,800">
+<!-- inject:css -->
+<link rel="stylesheet" href="assets/css/plugins.css">
+<link rel="stylesheet" href="assets/css/alien.min.css">
+<!-- endinject -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+	integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+	crossorigin="anonymous">
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="landlord.js"></script>
+</head>
+<body>
+
+	<div class="topHeader">
+		<div class="accountsDiv">
+			<button onclick="showsettingsFunction()">SETTINGS</button>
+			<button>LOGIN</button>
+			<button>LOGOUT</button>
+		</div>
+		<h3>LANDLORD</h3>
+		<div class="btn-Container">
+			<button onclick="showdashboard()">DASHBOARD</button>
+		<button onclick="showBuildings()">BUILDINGS</button>
+		<button onclick="showTenants()">TENANTS</button>
+		<button onclick="showPaymentsSection()">PAYMENTS</button>
+		</div>
+		
+	</div>
+
+	<!----             settings ---------------->
+	<div class="settingsDiv" id="settingsId" style="display: none;">
+		<i class="material-icons" onclick="closesettingsFunction()">close</i>
+		<h5>SETTINGS</h5>
+		<h6>Change Password</h6>
+		<div class="settingsDiv-Container">
+			<input type="text" name="oldPass" placeholder="Enter current password">
+			<input type="text" name="newPass" placeholder="Enter New Password">
+			<input type="text" name="newPassConfirm" placeholder="Confirm New Password">
+			<button>Change Password</button>
+		</div>
+	</div>
+
+
+	<!-- =============================================================================================================================
+	                                       DASHBOARD
+	 =========================================================================================================================== -->
+
+
+	 <div class="dashboard" id="dashboardId">
+
+	<!-- Add Property-------------->
+	<div class="addProperty" id="addPropertyId" style="display: none;">
+		<div class="addProperty-container">
+			<i class="material-icons" onclick="closepropFunction()">close</i>
+			<h4>Add New Property</h4>
+			<input type="text" name="name" placeholder="Enter new property name">
+			<input type="text" name="locale" placeholder="Location">
+			<input type="number" name="units" placeholder="Number of units/houses">
+			<button class="addpropertyBtn">ADD</button>
+		</div>
+	</div>
+
+	<div class="menuHeader">
+		<li onclick="addpropFunction()">
+			<img src="property.svg">
+			<p>Add New Property</p>
+		</li>
+		<li onclick="showpaymentRecordsFunction()">
+			<img src="dashboard.svg">
+			<p>Payment History</p>
+		</li>
+		<li onclick="showduepayFunction()">
+			<img src="paydue.svg">
+			<p>Due Payments</p>
+		</li>
+		<li onclick="showlatepayIdFunction()">
+			<img src="latepay.svg">
+			<p>Late Payments</p>
+		</li>
+		<li onclick="showmanageuserIdFunction()">
+			<img src="users.svg">
+			<p>Manage Users</p>
+		</li>
+	</div>
+
+	<div class="titleDisp">
+		<h5>Abaliq Investments</h5>
+	</div>
+
+
+<!---------------------------
+	payment History
+	--------------------------------------->
+
+	<div class="paymentRecords" id="paymentRecordsId" style="display:none;">
+		<h4>Payment Records</h4>
+
+		<div class="payHistory">
+			<p>Sort your search as desired</p>
+			<div>
+				<select class="custom-select">
+					<option value="0">Select Property:</option>
+					<option value="1">Abaliq</option>
+				</select>
+				<select class="custom-select">
+					<option value="0">House Number:</option>
+					<option value="1">G1</option>
+					<option value="2">A1</option>
+				</select>
+				<select class="custom-select">
+					<option value="0">Select Month:</option>
+					<option value="1">January</option>
+					<option value="2">February</option>
+					<option value="3">March</option>
+					<option value="4">April</option>
+					<option value="5">May</option>
+					<option value="6">June</option>
+					<option value="7">July</option>
+					<option value="8">August</option>
+					<option value="9">September</option>
+					<option value="10">October</option>
+					<option value="11">November</option>
+					<option value="12">December</option>
+				</select>
+				<button class="applyBtn">APPLY</button>
+			</div>
+		</div>
+
+		<div class="LatestPaymentsRec">
+			<div class="latestSection">
+		<div class="latestHeader ">
+			<h4>Latest Payments</h4>
+			<p>Date</p>
+			<p>Time</p>
+			<p>Property</p>
+			<p>House</p>
+			<p>Amount</p>
+		</div>
+		<div class="flex-Container">
+					<div class="flex-Item">
+						<div class="dateDisp">14/05/</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					</div>
+
+					<div class="flex-Item">
+						<div class="dateDisp">14/05/</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					</div>
+
+					<div class="flex-Item">
+						<div class="dateDisp">14/05/</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					</div>
+
+					<div class="flex-Item">
+						<div class="dateDisp">14/05/</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					</div>
+				</div>		
+	</div>
+		</div>
+
+
+		<div class="historyDisplay">
+			<div class="historyDisplay-Container">
+				<div class="historyHeader">
+					<h5>Date</h5>
+			        <h5>Time</h5>
+			        <h5>Property</h5>
+			        <h5>House</h5>
+			        <h5>Amount</h5>
+				</div>
+				<div class="flex-Container">
+					 <div class="flex-Item">
+					 	<div class="dateDisp">14/05/2017</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					 </div>
+					  <div class="flex-Item">
+					 	<div class="dateDisp">14/05/2017</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					 </div>
+					  <div class="flex-Item">
+					 	<div class="dateDisp">14/05/2017</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					 </div>
+					  <div class="flex-Item">
+					 	<div class="dateDisp">14/05/2017</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					 </div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+	<!--------------------------------------------
+		Due Payments
+		--------------------------------------------------->
+		<div class="duePay" id="duePayId" style="display: none;">
+			<h4>Due Payments</h4>
+			<p> The records displayed here represent unpaid rents from the 1st to the 10th of every month.</p>
+			<div class="duePayDisplay">
+			<div class="duePayDisplay-Container">
+				<div class="duePayHeader">
+					<h5>Date</h5>
+			        <h5>Time</h5>
+			        <h5>Property</h5>
+			        <h5>House</h5>
+			        <h5>Amount</h5>
+				</div>
+				<div class="flex-Container">
+					 <div class="flex-Item">
+					 	<div class="dateDisp">14/05/2017</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					 </div>
+					  <div class="flex-Item">
+					 	<div class="dateDisp">14/05/2017</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					 </div>
+					  <div class="flex-Item">
+					 	<div class="dateDisp">14/05/2017</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					 </div>
+					  <div class="flex-Item">
+					 	<div class="dateDisp">14/05/2017</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					 </div>
+				</div>
+			</div>
+		</div>
+		</div>
+
+<!--------------------------------------
+	late payments
+	---------------------------------------------------->
+	<div class="latepayDiv" id="latepayId" style="display: none;">
+		<h4>Late Payments</h4>
+		<p>These records represent late payments which triggered the fine</p>
+
+		<!-------- No records-------------->
+		<div class="nullRecords" style="display: none;">
+			<h4>Sorry... There are no records found</h4>
+		</div>
+
+
+		<div class="latepayDisplay">
+			<div class="latepayDisplay-Container">
+				<div class="latepayHeader">
+					<h5>Date</h5>
+			        <h5>Time</h5>
+			        <h5>Property</h5>
+			        <h5>House</h5>
+			        <h5>Amount</h5>
+			        <h5>Eviction</h5>
+				</div>
+				<div class="flex-Container">
+					 <div class="flex-Item">
+					 	<div class="dateDisp">14/05/2017</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+						<div class="evict">
+							<button class="evictionBtn">Evict</button>
+						</div>
+					 </div>
+					  <div class="flex-Item">
+					 	<div class="dateDisp">14/05/2017</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+						<div class="evict">
+							<button class="evictionBtn">Evict</button>
+						</div>
+					 </div>
+					  <div class="flex-Item">
+					 	<div class="dateDisp">14/05/2017</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+						<div class="evict">
+							<button class="evictionBtn">Evict</button>
+						</div>
+					 </div>
+					  <div class="flex-Item">
+					 	<div class="dateDisp">14/05/2017</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+						<div class="evict">
+							<button class="evictionBtn">Evict</button>
+						</div>
+					 </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-------------------------
+		Manage users
+		---------------------------------------------------------->
+		<div class="manageuserDiv" id="manageuserId" style="display: none;">
+			<h5>Manage Users</h5>
+			<h4>The following are the applications for an account</h4>
+			<div class="manageuserDisplay">
+				<div class="manageuserDisplay-Container">
+					<div class="flex-Container">
+						<div class="flex-Item">
+							<div class="firstNameDiv">FirstName</div>
+							<div class="lastNameDiv">LastName</div>
+							<div class="userNameDiv">UserName</div>
+							<div >
+								<button class="addUserBtn">ADD</button>
+							</div>
+							<div>
+								<button class="rejectUserBtn">REJECT</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<h4>The following are the registered users</h4>
+			<div class="manageuserDisplay-Container">
+					<div class="flex-Container">
+						<div class="flex-Item">
+							<div class="firstNameDiv">FirstName</div>
+							<div class="lastNameDiv">LastName</div>
+							<div class="userNameDiv">UserName</div>
+							<div>
+								<button class="removeUserBtn">REMOVE</button>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+
+
+<!-----------------------------------
+	Dashboard
+	--------------------------------------------------->
+
+	<div class="dashRecords" id="dashRecordsId">
+	<div class="updatesSection" id="updatesSectionId">
+		<div class="updateHeader ">
+			<h4>Updates</h4>
+		</div>
+		<div class="updateContent">
+				<div class="flex-Container">
+					<div class="flex-Item">
+						<p style="color: red">Vacants</p>
+					</div>
+				</div>
+			</div>
+	</div>
+
+	<div class="latestSection" id="latestSectionId">
+		<div class="latestHeader ">
+			<h4>Latest Payments</h4>
+			<p>Date</p>
+			<p>Time</p>
+			<p>Property</p>
+			<p>House</p>
+			<p>Amount</p>
+		</div>
+		<div class="flex-Container">
+					<div class="flex-Item">
+						<div class="dateDisp">14/05/</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					</div>
+
+					<div class="flex-Item">
+						<div class="dateDisp">14/05/</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					</div>
+
+					<div class="flex-Item">
+						<div class="dateDisp">14/05/</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					</div>
+
+					<div class="flex-Item">
+						<div class="dateDisp">14/05/</div>
+						<div class="timeDisp">12:00am</div>
+						<div class="propertyDisp">prop</div>
+						<div class="houseDisp">A1</div>
+						<div class="amountDisp">7000</div>
+					</div>
+				</div>
+	</div>
+	</div>
+</div>
+
+
+	<!-- =============================================================================================================================
+	                                       BUILDINGS
+	 =========================================================================================================================== -->
+
+	 <div class="buildings" id="buildingsId" style="display: none;">
+	 	<div class="titleDisp">
+		<h5>Abaliq Investments</h5>
+	    </div>
+	    <div>
+	    	<h4>BUILDINGS</h4>
+	    </div>
+	    <div class="buildingsCard">
+	    	<div class="buildingsCard-Container">
+	    		<div class="buildingName">Building Name</div>
+	    		<div class="buildingLocation">Building Location</div>
+	    		<div class="buildingUnits">43 units</div>
+	    		<button class="editBuildingBtn" onclick="showeditProperty()">EDIT</button>
+	    		<button class="inspectBuildingBtn" onclick="showinspectContent()">INSPECT</button>
+	    	</div>
+	    </div>
+
+	    <div class="buildingsCard">
+	    	<div class="buildingsCard-Container">
+	    		<div class="buildingName">Building Name</div>
+	    		<div class="buildingLocation">Building Location</div>
+	    		<div class="buildingUnits">43 units</div>
+	    		<button class="editBuildingBtn" onclick="showeditProperty()">EDIT</button>
+	    		<button class="inspectBuildingBtn" onclick="showinspectContent()">INSPECT</button>
+	    	</div>
+	    </div>
+
+	    <div class="buildingsCard">
+	    	<div class="buildingsCard-Container">
+	    		<div class="buildingName">Building Name</div>
+	    		<div class="buildingLocation">Building Location</div>
+	    		<div class="buildingUnits">43 units</div>
+	    		<button class="editBuildingBtn" onclick="showeditProperty()">EDIT</button>
+	    		<button class="inspectBuildingBtn" onclick="showinspectContent()">INSPECT</button>
+	    	</div>
+	    </div>
+
+	    <div class="editContent" id="editContentId" style="display: none;">
+	    	<i class="material-icons" onclick="closeditProperty()">close</i>
+	    	<h4>Edit Property</h4>
+	    	<input type="text" name="namedit" placeholder="New Name">
+	    	<input type="text" name="localedit" placeholder="New Location">
+	    	<input type="number" name="unitEdit" placeholder="Number of Units">
+	    	<button class="ignoreBtn"onclick="closeditProperty()">IGNORE CHANGE</button>
+	    	<button class="saveBtn">SAVE</button>
+	    </div>
+
+	    <div class="inspectContent" id="inspectContentId" style="display: none;">
+	    	<i class="material-icons" onclick="closeinspectContent()">close</i>
+	    		<div class="inspectContent-Container">
+	    			<button class="accountsLBtn" onclick="showacLinkedId()">Accounts Linked to Building</button>
+	    			<button class="vacantUBtn" onclick="showvacantUnitsId()">Vacant Units</button>
+	    			<button class="overdueRBtn" onclick="showoverduerentsId()">Overdue Rents</button>
+	    		</div>
+	    		<div class="inspectContent-Material">
+
+	    			<!---     Accounts Linked to Building ------->
+	    			<div class="acLinkedDiv" id="acLinkedId">
+	    				<h6 style="text-align: center;text-decoration: underline;">Accounts linked to Building</h6>
+	    				<div class="flex-Container">
+						<div class="flex-Item">
+							<div class="firstNameDiv">FirstName</div>
+							<div class="lastNameDiv">LastName</div>
+							<div class="userNameDiv">UserName</div>
+							<div>
+								<button class="removeUserBtn">REMOVE</button>
+							</div>
+						</div>
+					</div>
+	    			</div> 
+
+	    			<!---    Vacant Units ------->
+	    			<div class="vacantUnitsDiv" id="vacantUnitsId" style="display: none;">
+	    				<h6 >Vacant Units</h6>
+	    				<div class="vacantUnitsHeader">
+	    					<p>Building</p>
+	    					<p>House Number</p>
+	    					<p>Vacant since</p>
+	    				</div>
+	    				<div class="flex-Container">
+	    					<div class="flex-Item">
+	    						<div class="VacbuildingName">Building Name</div>
+	    						<div class="VachouseNumber">A45</div>
+	    						<div class="VacDate">24/05/15</div>
+	    					</div>
+	    				</div>
+	    			</div>
+
+	    			<!---    Overdue Rents ------->
+	    			<div class="overduerentsDiv" id="overduerentsId" style="display: none;">
+	    				<h6>Overdue Rents</h6>
+	    				<div class="overdueHeader">
+			                <h5>Date</h5>
+			                <h5>Property</h5>
+			                <h5>House</h5>
+			                <h5>Amount owed</h5>
+				        </div>
+				        <div class="flex-Container">
+				        	<div class="flex-Item">
+				        		<div class="overDate">24/09/18</div>
+				        		<div class="property">Prop</div>
+				        		<div class="overHouse">G4</div>
+				        		<div class="overAmount">24000</div>
+				        	</div>
+				        </div>
+	    			</div>
+
+	    		</div>
+	    	</div>
+
+	   
+	 </div>
+
+
+
+	<!-- =============================================================================================================================
+	                                       TENANTS
+	 =========================================================================================================================== -->
+
+	 <div class="tenants" id="tenantsId" style="display: none;">
+	 	<div class="titleDisp">
+		<h5>Abaliq Investments</h5>
+	    </div>
+	    <div>
+	    	<h4>TENANTS</h4>
+	    </div>
+			<div class="tenantSort">
+				<select class="custom-select">
+					<option value="0">Select Property:</option>
+					<option value="1">Abaliq</option>
+				</select>
+				<select class="custom-select">
+					<option value="0">House Number:</option>
+					<option value="1">G1</option>
+					<option value="2">A1</option>
+				</select>
+				<button class="tenantapplyBtn">APPLY</button>
+			</div>
+
+			<div class="tenantsHeader">
+				<h5>Building</h5>
+			    <h5>House</h5>
+			    <h5>Tenant Name</h5>
+			    <h5>Phone Number</h5>
+			</div>
+			<div class="flex-Container">
+			<div class="flex-Item">
+				    <div class="tenbuilding">Building</div>
+				    <div class="tenHouse">FL7</div>
+				    <div class="tename">James Kariuki</div>
+				    <div class="tenumber">0789654321</div>
+			 </div>
+			 <div class="flex-Item">
+				    <div class="tenbuilding">Building</div>
+				    <div class="tenHouse">FL7</div>
+				    <div class="tename">James Kariuki</div>
+				    <div class="tenumber">0789654321</div>
+			 </div>
+			 <div class="flex-Item">
+				    <div class="tenbuilding">Building</div>
+				    <div class="tenHouse">FL7</div>
+				    <div class="tename">James Kariuki</div>
+				    <div class="tenumber">0789654321</div>
+			 </div>
+			 <div class="flex-Item">
+				    <div class="tenbuilding">Building</div>
+				    <div class="tenHouse">FL7</div>
+				    <div class="tename">James Kariuki</div>
+				    <div class="tenumber">0789654321</div>
+			 </div>
+			</div>
+	 </div>
+
+
+
+	<!-- =============================================================================================================================
+	                                       PAYMENTS
+	 =========================================================================================================================== -->
+
+	 <div class="paymentSection" id="paymentSectionId" style="display: none;">
+	 	<div class="titleDisp">
+		<h5>Abaliq Investments</h5>
+	    </div>
+	    <div>
+	    	<h4>Payments</h4>
+	    </div>
+	    <div class="paymentsHeader">
+	    	<h5>Time</h5>
+			<h5>Date</h5>
+			<h5>Tenant Name</h5>
+			<h5>House</h5>
+			<h5>Amount</h5>
+			<h5>Mpesa Code</h5>
+	    </div>
+	    <div class="payments-Container">
+	    	<div class="flex-Container">
+	    		<div class="flex-Item">
+	    			<div>12:00</div>
+	    			<div>13/07/2016</div>
+	    			<div>James Kariuki</div>
+	    			<div>G9</div>
+	    			<div>13000</div>
+	    			<div>mChJVAJ3b4</div>
+	    		</div>
+
+	    		<div class="flex-Item">
+	    			<div>12:00</div>
+	    			<div>13/07/2016</div>
+	    			<div>James </div>
+	    			<div>G9</div>
+	    			<div>13000</div>
+	    			<div>mChJVAJ3b4</div>
+	    		</div>
+
+	    		<div class="flex-Item">
+	    			<div>12:00</div>
+	    			<div>13/07/2016</div>
+	    			<div>James Kariuki</div>
+	    			<div>G9</div>
+	    			<div>13000</div>
+	    			<div>mChJVAJ3b4</div>
+	    		</div>
+
+	    		<div class="flex-Item">
+	    			<div>12:00</div>
+	    			<div>13/07/2016</div>
+	    			<div>James </div>
+	    			<div>G9</div>
+	    			<div>13000</div>
+	    			<div>mChJVAJ3b4</div>
+	    		</div>
+	    	</div>
+	    </div>
+	 </div>
+
+</body>
+</html>
